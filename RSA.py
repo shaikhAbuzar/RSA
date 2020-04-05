@@ -6,15 +6,31 @@ q = int(input('Enter the value of q: '))
 
 # Calculating n
 n = p * q
+# print('n', n)
 
 # Calculating phi of N
 phi_n = (p - 1) * (q - 1)
+# print('pn', phi_n)
 
 # Calculating e
-i = 2
-while gcd(i, phi_n) != 1:
-    i += 1
-e = i
+e_if = int(input('Would you mannualy like to enter e[y = 1 / n = 0]: '))
+if e_if == 0:
+    i = 2
+    while gcd(i, phi_n) != 1:
+        i += 1
+    e = i
+elif e_if == 1:
+    e = int(input('Enter the value of e: '))
+    if 1 < e < phi_n and gcd(e, phi_n) == 1:
+        print(f'{e} is valid value of e')
+    else:
+        print(f'{e} is not a valid value for e')
+else:
+    print('invalid input for e\n finding e mannually')
+    i = 2
+    while gcd(i, phi_n) != 1:
+        i += 1
+    e = i
 
 # Calculating d
 d = 0
@@ -23,13 +39,14 @@ for k in range(1, 10):
     if int(str(d - int(d))[2:]) == 0:
         d = int(d)
         break
+print(k)
 
 # Displaying the output
 print(f'Public Key: {{{n}, {e}}}')
 print(f'Private Key: [{p}, {q}, {d}]')
 
 while True:
-    question = int(input('\nDo You wish to \n1. Implement RSA\n2. Implement Digital Signature\n3. Exit'))
+    question = int(input('\nDo You wish to \n1. Implement RSA\n2. Implement Digital Signature\n3. Exit\nYour choice: '))
     if question == 2:
         e, d = d, e  # for implementing digital signature we interchange the bits
     elif question != 1:
