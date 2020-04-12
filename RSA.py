@@ -39,7 +39,7 @@ for k in range(1, 10):
     if int(str(d - int(d))[2:]) == 0:
         d = int(d)
         break
-print(k)
+# print(k)
 
 # Displaying the output
 print(f'Public Key: {{{n}, {e}}}')
@@ -71,7 +71,9 @@ while True:
     for cipher in ciphered_text:
         temp += str(cipher)
 
-    print(f'\n\t[CIPHERED]: {temp}')
+    if question == 2: content = 'DIGITAL SIGNATURE'
+    else: content = 'CIPHERED'
+    print(f'\n\t[{content}]: {temp}')
 
     # Decryption
     deciphered_text = ''
